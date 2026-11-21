@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHEOLHON — 鐵魂</title>
+
+<link href="https://googleapis.com" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION */
+
+nav {
+    height: 85px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+    radial-gradient(ellipse at center, #222 0%, #090909 42%, #000 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    border: 1px solid #242424;
+    border-radius: 50%;
+    box-shadow:
+    0 0 80px #171717,
+    inset 0 0 80px #111;
+    opacity: .45;
+}
+
+.hero-content {
+    z-index: 2;
+    text-align: center;
+    animation: appear 1.5s ease;
+}
+
+.hero-sub {
+    font-size: 10px;
+    letter-spacing: 8px;
+    color: #888;
+    margin-bottom: 35px;
+}
+
+.hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: clamp(100px, 19vw, 240px);
+    letter-spacing: -15px;
+    line-height: 1.2;
+    color: #eee;
+    text-shadow: 0 0 35px #777;
+}
+
+.hero-eng {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 36px);
+    letter-spacing: 15px;
+    margin-top: 20px;
+}
+
+.hero-line {
+    width: 90px;
+    height: 1px;
+    background: #777;
+    margin: 35px auto;
+}
+
+.hero-desc {
+    color: #888;
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+.discover {
+    position: absolute;
+    bottom: 45px;
+    color: #888;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-decoration: none;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* COLLECTION */
+
+.collection {
+    padding: 130px 8%;
+}
+
+.section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 55px;
+    font-weight: 400;
+    margin-bottom: 65px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product {
+    cursor: pointer;
+}
+
+.product-image {
+    height: 420px;
+    background: linear-gradient(145deg, #222, #080808);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.product:hover .product-image {
+    background: linear-gradient(145deg, #333, #101010);
+}
+
+.product-image::after {
+    content: "鐵魂";
+    font-family: 'Noto Serif KR', serif;
+    font-size: 70px;
+    color: #eee;
+    opacity: .8;
+    transform: rotate(-8deg);
+}
+
+.product:nth-child(2) .product-image::after {
+    content: "CHEOLHON";
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+
+.product:nth-child(3) .product-image::after {
+    content: "鐵";
+    font-size: 110px;
+}
+
+.product-info {
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.product-price {
+    font-size: 11px;
+    color: #777;
+}
+
+/* MANIFESTO */
+
+.manifesto {
+    min-height: 550px;
+    background: #e9e9e9;
+    color: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.manifesto h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(35px, 7vw, 75px);
+    letter-spacing: 5px;
+}
+
+.manifesto p {
+    margin-top: 30px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    line-height: 2.5;
+}
+
+/* ABOUT */
+
+.about {
+    padding: 130px 10%;
+    text-align: center;
+}
+
+.about h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 65px;
+    margin-bottom: 30px;
+}
+
+.about p {
+    color: #888;
+    line-height: 2.5;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #222;
+    padding: 50px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 5px;
+    font-size: 23px;
+}
+
+footer p {
+    font-size: 9px;
+    color: #666;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 700px) {
+    nav {
+        padding: 0 5%;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero-title {
+        letter-spacing: -8px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 400px;
+    }
+
+    .collection {
+        padding: 90px 6%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">CHEOLHON.</div>
+
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#shop">SHOP</a></li>
+        <li><a href="#about">ABOUT</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-sub">
+            THE SPIRIT OF STRENGTH
+        </div>
+
+        <h1 class="hero-title">鐵魂</h1>
+
+        <div class="hero-eng">
+            CHEOLHON
+        </div>
+
+        <div class="hero-line"></div>
+
+        <div class="hero-desc">
+            BUILT NOT GIVEN.
+        </div>
+
+    </div>
+
+    <a href="#shop" class="discover">
+        DISCOVER THE COLLECTION ↓
+    </a>
+
+</section>
+
+<section class="collection" id="shop">
+
+    <div class="section-label">
+        001 — FIRST COLLECTION
+    </div>
+
+    <h2 class="section-title">
+        NEW ARRIVALS.
+    </h2>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-info">
+                <span class="product-name">IRON SOUL TEE</span>
+                <span class="product-price">COMING SOON</span>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-info">
+                <span class="product-name">SIGNATURE TEE</span>
+                <span class="product-price">COMING SOON</span>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-info">
+                <span class="product-name">RAW IRON OVERSIZED TEE</span>
+                <span class="product-price">COMING SOON</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="manifesto">
+    <h2>THE IRON WILL</h2>
+    <p>WE BELIEVE IN THE UNYIELDING SPIRIT OF CREATION.<br>FORGED IN ACCURACY, BUILT FOR THE RESILIENT.</p>
+</section>
+
+<section class="about" id="about">
+    <h2>鐵魂</h2>
+    <p>철혼(CHEOLHON)은 내면의 강인함과 타협하지 않는 가치를 옷에 담아냅니다.<br>시대를 초월하는 단단함과 정교함을 경험해 보세요.</p>
+</section>
+
+<footer>
+    <div class="footer-logo">CHEOLHON.</div>
+    <p>&copy; 2026 CHEOLHON. ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+</html>
