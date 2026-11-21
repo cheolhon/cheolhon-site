@@ -22,7 +22,7 @@ html {
 
 body {
     background: #050505;
-    color: white;
+    color: #fff;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
@@ -46,6 +46,7 @@ nav {
     font-family: 'Cormorant Garamond', serif;
     font-size: 25px;
     letter-spacing: 5px;
+    font-weight: 600;
 }
 
 nav ul {
@@ -59,12 +60,18 @@ nav a {
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 2px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: white;
 }
 
 /* HERO */
 
 .hero {
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,7 +93,9 @@ nav a {
     height: 650px;
     border: 1px solid #242424;
     border-radius: 50%;
-    box-shadow: 0 0 80px #171717;
+    box-shadow:
+        0 0 80px #171717,
+        inset 0 0 80px #111;
     opacity: .45;
 }
 
@@ -107,13 +116,15 @@ nav a {
     font-family: 'Noto Serif KR', serif;
     font-weight: 900;
     font-size: clamp(100px, 19vw, 240px);
+    letter-spacing: -15px;
+    line-height: 1.2;
     color: #eee;
     text-shadow: 0 0 35px #777;
 }
 
 .hero-eng {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
+    font-size: clamp(20px, 4vw, 36px);
     letter-spacing: 15px;
     margin-top: 20px;
 }
@@ -145,6 +156,7 @@ nav a {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -171,6 +183,8 @@ nav a {
     margin-bottom: 65px;
 }
 
+/* PRODUCTS */
+
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -182,42 +196,48 @@ nav a {
     min-width: 0;
 }
 
-/* PRODUCT IMAGE */
+/* ALL PRODUCT IMAGES */
 
 .product-image {
     width: 100%;
     aspect-ratio: 4 / 5;
+    height: auto;
     position: relative;
     overflow: hidden;
     background: #111;
+    display: block;
 }
 
-/* REMOVE DECORATIVE TEXT */
+/* REMOVE OLD DECORATIVE TEXT */
 
 .product-image::after {
     content: none !important;
+    display: none !important;
 }
 
-/* ALL THREE IMAGES SAME SIZE */
+/* IMAGE SIZE FIX */
 
 .product-image img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100% !important;
     height: 100% !important;
 
+    max-width: none;
+    display: block;
+
     object-fit: cover !important;
     object-position: center;
-
-    display: block;
 }
+
+/* PRODUCT INFO */
 
 .product-info {
     padding: 22px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
 }
 
@@ -306,6 +326,7 @@ footer p {
 @media(max-width: 700px) {
 
     nav {
+        height: 70px;
         padding: 0 5%;
     }
 
@@ -322,20 +343,27 @@ footer p {
         letter-spacing: -8px;
     }
 
-    .products {
-        grid-template-columns: 1fr;
-    }
-
-    .product-image {
-        aspect-ratio: 4 / 5;
-    }
-
     .collection {
         padding: 90px 6%;
     }
 
     .section-title {
         font-size: 55px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .product-image {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        height: auto;
+    }
+
+    .product-info {
+        padding: 18px 0;
     }
 
     footer {
@@ -350,7 +378,10 @@ footer p {
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav>
+
     <div class="logo">CHEOLHON.</div>
 
     <ul>
@@ -358,7 +389,10 @@ footer p {
         <li><a href="#shop">SHOP</a></li>
         <li><a href="#about">ABOUT</a></li>
     </ul>
+
 </nav>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -388,6 +422,8 @@ footer p {
 
 </section>
 
+<!-- COLLECTION -->
+
 <section class="collection" id="shop">
 
     <div class="section-label">
@@ -400,13 +436,21 @@ footer p {
 
     <div class="products">
 
+        <!-- PRODUCT 1 -->
+
         <div class="product">
 
             <div class="product-image">
-                <img src="IMG_0695.jpeg" alt="CHEOLHON TEE">
+
+                <img
+                    src="IMG_0695.jpeg"
+                    alt="CHEOLHON TEE"
+                >
+
             </div>
 
             <div class="product-info">
+
                 <span class="product-name">
                     CHEOLHON TEE
                 </span>
@@ -414,17 +458,26 @@ footer p {
                 <span class="product-price">
                     COMING SOON
                 </span>
+
             </div>
 
         </div>
 
+        <!-- PRODUCT 2 -->
+
         <div class="product">
 
             <div class="product-image">
-                <img src="IMG_0724.png" alt="CHEOLHON SIGNATURE">
+
+                <img
+                    src="IMG_0724.png"
+                    alt="CHEOLHON SIGNATURE"
+                >
+
             </div>
 
             <div class="product-info">
+
                 <span class="product-name">
                     CHEOLHON SIGNATURE
                 </span>
@@ -432,17 +485,26 @@ footer p {
                 <span class="product-price">
                     COMING SOON
                 </span>
+
             </div>
 
         </div>
 
+        <!-- PRODUCT 3 -->
+
         <div class="product">
 
             <div class="product-image">
-                <img src="IMG_0725.png" alt="CHEOLHON OVERSIZED">
+
+                <img
+                    src="IMG_0725.png"
+                    alt="CHEOLHON OVERSIZED"
+                >
+
             </div>
 
             <div class="product-info">
+
                 <span class="product-name">
                     CHEOLHON OVERSIZED
                 </span>
@@ -450,6 +512,7 @@ footer p {
                 <span class="product-price">
                     COMING SOON
                 </span>
+
             </div>
 
         </div>
@@ -457,6 +520,8 @@ footer p {
     </div>
 
 </section>
+
+<!-- MANIFESTO -->
 
 <section class="manifesto">
 
@@ -469,6 +534,8 @@ footer p {
 
 </section>
 
+<!-- ABOUT -->
+
 <section class="about" id="about">
 
     <h2>鐵魂</h2>
@@ -479,6 +546,8 @@ footer p {
     </p>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
