@@ -3,24 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CHEOLHON — 鐵魂</title>
 
-<link href="https://googleapis.com" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-.product-image {
-    height: 460px !important;
-    position: relative;
-    overflow: hidden;
-}
 
-.product-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    display: block;
-}
-    * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,7 +22,7 @@ html {
 
 body {
     background: #050505;
-    color: #fff;
+    color: white;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
@@ -56,7 +46,6 @@ nav {
     font-family: 'Cormorant Garamond', serif;
     font-size: 25px;
     letter-spacing: 5px;
-    font-weight: 600;
 }
 
 nav ul {
@@ -70,11 +59,6 @@ nav a {
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 2px;
-    transition: .3s;
-}
-
-nav a:hover {
-    color: white;
 }
 
 /* HERO */
@@ -87,8 +71,12 @@ nav a:hover {
     align-items: center;
     position: relative;
     overflow: hidden;
-    background:
-    radial-gradient(ellipse at center, #222 0%, #090909 42%, #000 100%);
+    background: radial-gradient(
+        ellipse at center,
+        #222 0%,
+        #090909 42%,
+        #000 100%
+    );
 }
 
 .hero::before {
@@ -98,9 +86,7 @@ nav a:hover {
     height: 650px;
     border: 1px solid #242424;
     border-radius: 50%;
-    box-shadow:
-    0 0 80px #171717,
-    inset 0 0 80px #111;
+    box-shadow: 0 0 80px #171717;
     opacity: .45;
 }
 
@@ -121,15 +107,13 @@ nav a:hover {
     font-family: 'Noto Serif KR', serif;
     font-weight: 900;
     font-size: clamp(100px, 19vw, 240px);
-    letter-spacing: -15px;
-    line-height: 1.2;
     color: #eee;
     text-shadow: 0 0 35px #777;
 }
 
 .hero-eng {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 4vw, 36px);
+    font-size: 30px;
     letter-spacing: 15px;
     margin-top: 20px;
 }
@@ -195,48 +179,46 @@ nav a:hover {
 
 .product {
     cursor: pointer;
+    min-width: 0;
 }
+
+/* PRODUCT IMAGE */
 
 .product-image {
-    height: 420px;
-    background: linear-gradient(145deg, #222, #080808);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    aspect-ratio: 4 / 5;
     position: relative;
     overflow: hidden;
-    transition: .5s;
+    background: #111;
 }
 
-.product:hover .product-image {
-    background: linear-gradient(145deg, #333, #101010);
-}
+/* REMOVE DECORATIVE TEXT */
 
 .product-image::after {
-    content: "鐵魂";
-    font-family: 'Noto Serif KR', serif;
-    font-size: 70px;
-    color: #eee;
-    opacity: .8;
-    transform: rotate(-8deg);
+    content: none !important;
 }
 
-.product:nth-child(2) .product-image::after {
-    content: "CHEOLHON";
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    letter-spacing: 5px;
-}
+/* ALL THREE IMAGES SAME SIZE */
 
-.product:nth-child(3) .product-image::after {
-    content: "鐵";
-    font-size: 110px;
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center;
+
+    display: block;
 }
 
 .product-info {
     padding: 22px 0;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .product-name {
@@ -247,6 +229,7 @@ nav a:hover {
 .product-price {
     font-size: 11px;
     color: #777;
+    white-space: nowrap;
 }
 
 /* MANIFESTO */
@@ -318,7 +301,10 @@ footer p {
     letter-spacing: 2px;
 }
 
+/* MOBILE */
+
 @media(max-width: 700px) {
+
     nav {
         padding: 0 5%;
     }
@@ -341,11 +327,15 @@ footer p {
     }
 
     .product-image {
-        height: 400px;
+        aspect-ratio: 4 / 5;
     }
 
     .collection {
         padding: 90px 6%;
+    }
+
+    .section-title {
+        font-size: 55px;
     }
 
     footer {
@@ -354,6 +344,7 @@ footer p {
         text-align: center;
     }
 }
+
 </style>
 </head>
 
@@ -410,45 +401,95 @@ footer p {
     <div class="products">
 
         <div class="product">
-            <div class="product-image"><img src="IMG_0695.jpeg" alt="CHEOLHON TEE" style="width:100%;height:100%;object-fit:contain;display:block;"></div>
-            <div class="product-info">
-                <span class="product-name">CHEOLHON TEE</span>
-                <span class="product-price">COMING SOON</span>
+
+            <div class="product-image">
+                <img src="IMG_0695.jpeg" alt="CHEOLHON TEE">
             </div>
+
+            <div class="product-info">
+                <span class="product-name">
+                    CHEOLHON TEE
+                </span>
+
+                <span class="product-price">
+                    COMING SOON
+                </span>
+            </div>
+
         </div>
 
         <div class="product">
-            <div class="product-image"><img src="IMG_0724.png" alt="CHEOLHON SIGNATURE"></div>
-            <div class="product-info">
-                <span class="product-name">CHEOLHON SIGNATURE</span>
-                <span class="product-price">COMING SOON</span>
+
+            <div class="product-image">
+                <img src="IMG_0724.png" alt="CHEOLHON SIGNATURE">
             </div>
+
+            <div class="product-info">
+                <span class="product-name">
+                    CHEOLHON SIGNATURE
+                </span>
+
+                <span class="product-price">
+                    COMING SOON
+                </span>
+            </div>
+
         </div>
 
         <div class="product">
-            <div class="product-image"><img src="IMG_0725.png" alt="RAW IRON TEE"></div>
-            <div class="product-info">
-                <span class="product-name">CHEOLHON OVERSIZED</span>
-                <span class="product-price">COMING SOON</span>
+
+            <div class="product-image">
+                <img src="IMG_0725.png" alt="CHEOLHON OVERSIZED">
             </div>
+
+            <div class="product-info">
+                <span class="product-name">
+                    CHEOLHON OVERSIZED
+                </span>
+
+                <span class="product-price">
+                    COMING SOON
+                </span>
+            </div>
+
         </div>
 
     </div>
+
 </section>
 
 <section class="manifesto">
+
     <h2>THE IRON WILL</h2>
-    <p>WE BELIEVE IN THE UNYIELDING SPIRIT OF CREATION.<br>FORGED IN ACCURACY, BUILT FOR THE RESILIENT.</p>
+
+    <p>
+        WE BELIEVE IN THE UNYIELDING SPIRIT OF CREATION.<br>
+        FORGED IN ACCURACY, BUILT FOR THE RESILIENT.
+    </p>
+
 </section>
 
 <section class="about" id="about">
+
     <h2>鐵魂</h2>
-    <p>철혼(CHEOLHON)은 내면의 강인함과 타협하지 않는 가치를 옷에 담아냅니다.<br>시대를 초월하는 단단함과 정교함을 경험해 보세요.</p>
+
+    <p>
+        철혼(CHEOLHON)은 내면의 강인함과 타협하지 않는 가치를 옷에 담아냅니다.<br>
+        시대를 초월하는 단단함과 정교함을 경험해 보세요.
+    </p>
+
 </section>
 
 <footer>
-    <div class="footer-logo">CHEOLHON.</div>
-    <p>&copy; 2026 CHEOLHON. ALL RIGHTS RESERVED.</p>
+
+    <div class="footer-logo">
+        CHEOLHON.
+    </div>
+
+    <p>
+        © 2026 CHEOLHON. ALL RIGHTS RESERVED.
+    </p>
+
 </footer>
 
 </body>
